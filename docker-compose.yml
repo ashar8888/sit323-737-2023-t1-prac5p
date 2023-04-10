@@ -1,13 +1,15 @@
 version: "3.9"
 services:
-  calculator:
+  calculator-app:
     build: .
     ports:
       - "3000:3000"
     volumes:
-      - ./CalculatorApp:/app
+      - ./:/app
+      - /app/node_modules
     environment:
-      - NODE_ENV=production
+      - PORT = 3000
+      # - NODE_ENV=production
     restart: always
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/healthcheck"]
